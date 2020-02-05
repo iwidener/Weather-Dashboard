@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+   <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron jumbotron-fluid" style="background-color: black; color: white;">
+            <h1 class="text-center"><strong>Weather Dashboard</strong></h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="card">
+                    <div class="search-history"></div>
+                    <div class="card-body" id="cities-section">
+
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="search"><strong>Search for a City:</strong></label>
+                                <input type="text" class="form-control-append" id="city-name">
+
+                                <button type="submit" class="btn btn-primary" id="run-search">
+                                    <i class="fa fa-search"></i>
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header"><strong>Current Conditions:</strong></div>
+                    <div class="card-body" id="current-section"></div>
+
+                </div>
+
+                </br>
+
+                <div class="card">
+                    <div class="card-header"><strong>5-Day Forecast:</strong></div>
+                    <div class="card-body" id="future-section"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
