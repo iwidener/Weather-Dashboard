@@ -1,16 +1,42 @@
 //Start coding
-
 $(document).ready(function () {
     console.log("ready");
 
-    //Click button
+    //Creating a variable and the local stoarge that will store every city entered as well as the empty array. 
+    var cityList = JSON.parse(localStorage.getItem("cityList")) || []
+
+    //Print each city from the list in the local storage.
+    cityList.forEach(city => printCity(city));
+
+    //When page is reloaded, it shows the last entry of city on the list.  
+    getWeather(cityList[cityList.length - 1]);
 
     $(".btn.btn-primary").on("click", function (event) {
         event.preventDefault();
         var city = $("#city-name").val();
-        var apiKey = "13002b03031d9418e8a4593147cb8d89";
+        printCity(city);
 
-        console.log("#city-name");
+        //It pushes every new city into a list setting into a local storage. 
+        cityList.push(city);
+        localStorage.setItem("cityList", JSON.stringify(cityList))
+        getWeather(city);
+    });
+
+    //Creating a click function. Wheck clicked on a city anywhere on a document, it will get and show weather for that city. 
+    $(document).on("click", ".city", function () {
+        var city = $(this).text();
+        getWeather(city);
+    })
+
+    //Creating a variable of listed items, adding a class and appending to the existing class of list-group.
+    //By adding text(city), it will print the names of the cities. 
+    function printCity(city) {
+        var li = $("<li>").addClass("list-group-item city").text(city);
+        $(".list-group").append(li);
+    }
+
+    function getWeather(city) {
+        var apiKey = "13002b03031d9418e8a4593147cb8d89";
 
         //API call and result for current conditions.
 
@@ -72,13 +98,9 @@ $(document).ready(function () {
                         //Results are printed in 5-Day Forecast.
                         $("#future-section").html(forecastFive);
 
-                        //City name is printed in search form.
-                        $(".list-group").html(city);
-
                     }
-                    //Local storage
                 })
             }
         });
-    });
+    }
 })
